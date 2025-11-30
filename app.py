@@ -435,3 +435,4 @@ if 'show_debug' in locals() and show_debug:
         if st.session_state.image:
             st.write("Image Mode:", st.session_state.image.mode)
             st.write("Image Size:", st.session_state.image.size)
+st.markdown("demo")
