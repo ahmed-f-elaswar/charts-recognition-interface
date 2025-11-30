@@ -11,6 +11,54 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Initialize session state first
+if 'image' not in st.session_state:
+    st.session_state.image = None
+if 'chat_history' not in st.session_state:
+    st.session_state.chat_history = []
+if 'theme' not in st.session_state:
+    st.session_state.theme = "Purple Gradient"
+
+# Theme configurations
+THEMES = {
+    "Purple Gradient": {
+        "primary": "#667eea",
+        "secondary": "#764ba2",
+        "gradient": "linear-gradient(120deg, #667eea 0%, #764ba2 100%)",
+        "card_gradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+    },
+    "Ocean Blue": {
+        "primary": "#2E3192",
+        "secondary": "#1BFFFF",
+        "gradient": "linear-gradient(120deg, #2E3192 0%, #1BFFFF 100%)",
+        "card_gradient": "linear-gradient(135deg, #2E3192 0%, #1BFFFF 100%)"
+    },
+    "Sunset Orange": {
+        "primary": "#f12711",
+        "secondary": "#f5af19",
+        "gradient": "linear-gradient(120deg, #f12711 0%, #f5af19 100%)",
+        "card_gradient": "linear-gradient(135deg, #f12711 0%, #f5af19 100%)"
+    },
+    "Forest Green": {
+        "primary": "#134E5E",
+        "secondary": "#71B280",
+        "gradient": "linear-gradient(120deg, #134E5E 0%, #71B280 100%)",
+        "card_gradient": "linear-gradient(135deg, #134E5E 0%, #71B280 100%)"
+    },
+    "Rose Pink": {
+        "primary": "#ec008c",
+        "secondary": "#fc6767",
+        "gradient": "linear-gradient(120deg, #ec008c 0%, #fc6767 100%)",
+        "card_gradient": "linear-gradient(135deg, #ec008c 0%, #fc6767 100%)"
+    },
+    "Dark Mode": {
+        "primary": "#BB86FC",
+        "secondary": "#03DAC6",
+        "gradient": "linear-gradient(120deg, #BB86FC 0%, #03DAC6 100%)",
+        "card_gradient": "linear-gradient(135deg, #BB86FC 0%, #03DAC6 100%)"
+    }
+}
+
 # Get current theme colors
 theme = THEMES[st.session_state.theme]
 
@@ -127,54 +175,6 @@ st.markdown(f"""
 # Title and description with custom styling
 st.markdown('<h1 class="main-title">🖼️ Image Question Answering</h1>', unsafe_allow_html=True)
 st.markdown('<p class="subtitle">Upload an image and ask intelligent questions about its content</p>', unsafe_allow_html=True)
-
-# Theme configurations
-THEMES = {
-    "Purple Gradient": {
-        "primary": "#667eea",
-        "secondary": "#764ba2",
-        "gradient": "linear-gradient(120deg, #667eea 0%, #764ba2 100%)",
-        "card_gradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-    },
-    "Ocean Blue": {
-        "primary": "#2E3192",
-        "secondary": "#1BFFFF",
-        "gradient": "linear-gradient(120deg, #2E3192 0%, #1BFFFF 100%)",
-        "card_gradient": "linear-gradient(135deg, #2E3192 0%, #1BFFFF 100%)"
-    },
-    "Sunset Orange": {
-        "primary": "#f12711",
-        "secondary": "#f5af19",
-        "gradient": "linear-gradient(120deg, #f12711 0%, #f5af19 100%)",
-        "card_gradient": "linear-gradient(135deg, #f12711 0%, #f5af19 100%)"
-    },
-    "Forest Green": {
-        "primary": "#134E5E",
-        "secondary": "#71B280",
-        "gradient": "linear-gradient(120deg, #134E5E 0%, #71B280 100%)",
-        "card_gradient": "linear-gradient(135deg, #134E5E 0%, #71B280 100%)"
-    },
-    "Rose Pink": {
-        "primary": "#ec008c",
-        "secondary": "#fc6767",
-        "gradient": "linear-gradient(120deg, #ec008c 0%, #fc6767 100%)",
-        "card_gradient": "linear-gradient(135deg, #ec008c 0%, #fc6767 100%)"
-    },
-    "Dark Mode": {
-        "primary": "#BB86FC",
-        "secondary": "#03DAC6",
-        "gradient": "linear-gradient(120deg, #BB86FC 0%, #03DAC6 100%)",
-        "card_gradient": "linear-gradient(135deg, #BB86FC 0%, #03DAC6 100%)"
-    }
-}
-
-# Initialize session state
-if 'image' not in st.session_state:
-    st.session_state.image = None
-if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = []
-if 'theme' not in st.session_state:
-    st.session_state.theme = "Purple Gradient"
 
 # Create two columns for layout
 col1, col2 = st.columns([1, 1])
